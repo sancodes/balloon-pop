@@ -8,11 +8,11 @@
 </head>
 
 <body>
-    <button onclick="startgame()">
-        Set Timer
+    <button onclick="startgame()" id="start-game">
+        Start Game
     </button>
 
-    <button onclick="inflate()">
+    <button onclick="inflate()" id="inflate" disabled="true">
         Inflate
         <span id="click-count">0</span>
     </button>
@@ -20,6 +20,10 @@
     <div>
         Ballons Popped
         <span id="pop-count"> 0 </span>
+    </div>
+    <div>
+        Time Remaining
+        <span id="count-down"> 0 </span>
     </div>
 
 
