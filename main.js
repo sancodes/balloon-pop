@@ -98,3 +98,40 @@ const draw = () => {
 }
 //#endregion
 
+let players = [];
+//form
+const setPlayer = event => {
+    event.preventDefault(); //without this code the function output wont show in console
+
+    //formTarget grabs on to the event property target, to later on
+    //access the value 
+    let formTarget = event.target;
+
+    let playerName = formTarget["player-name"].value; //we grab on the 'player-name' from our index.html 
+
+    formTarget.reset();
+
+    //if the players[] is not empty
+    if (players.length > 0) {
+
+        //loop to check if the name already exists or not
+        //if it exists, dont do anything
+        for (let i = 0; i < players.length; i++) {
+            if (players[i].name != playerName) {
+                players.push({ name: playerName, topScore: 0 })
+                break;
+            }
+
+            //if the name doesnt exists insert the new name in the back
+            else {
+
+            }
+        }
+    }
+    //if players[] is empty
+    else {
+        players.push({ name: playerName, topScore: 0 });
+
+    }
+    console.log(players);
+}
