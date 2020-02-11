@@ -1,15 +1,19 @@
+//button
+let startButton = document.getElementById("start-game");
+let inflateButton = document.getElementById("inflate");
 
+//#region game logic and data
 let inflateCount = 0;
 let balloonHeight = 120;
 let balloonWidth = 100;
 let eachIncrement = 40;
 let maxSizeToBurst = 250;
-let popCount = 0;
-let startButton = document.getElementById("start-game");
-let inflateButton = document.getElementById("inflate");
+let currentPopCount = 0;
+let highestPopCount = 0;
 let clockId = 0;
 let gameLength = 5000; //milisecond 
 let timeRemaining = 0;
+
 
 //start game
 //also contains stop game function--> basically setTimeout(), 1st param
@@ -19,6 +23,7 @@ const startgame = () => {
 
     startClock();
 
+    //stop game if game length reached
     setTimeout(() => {
         console.log("TimeOut");
         startButton.removeAttribute("disabled");
@@ -26,8 +31,14 @@ const startgame = () => {
         balloonHeight = 120;
         balloonWidth = 100;
         inflateCount = 0;
+
+        if (currentPopCount > highestPopCount) {
+            highestPopCount = currentPopCount;
+        }
+        currentPopCount = 0;
         stopClock();
         draw();  //to update the original state of the balloon
+        console.log(highestPopCount);
     }, gameLength)
 }
 
@@ -55,7 +66,7 @@ const inflate = () => {
     if (balloonHeight >= maxSizeToBurst) {
         balloonHeight = 0;
         balloonWidth = 0;
-        popCount++;
+        currentPopCount++;
     }
 
     balloonHeight += eachIncrement; //height increment
@@ -79,6 +90,11 @@ const draw = () => {
 
     //pop-count update number
     let popCountElem = document.getElementById("pop-count")
-    popCountElem.innerText = popCount.toString();
+    popCountElem.innerText = currentPopCount.toString();
+
+    //high-pop-count update number
+    let highPopCountElem = document.getElementById("high-pop-count");
+    highPopCountElem.innerText = highestPopCount.toString();
 }
+//#endregion
 
