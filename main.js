@@ -98,40 +98,79 @@ const draw = () => {
 }
 //#endregion
 
-let players = [];
+let playersArray = [];
 //form
 const setPlayer = event => {
-    event.preventDefault(); //without this code the function output wont show in console
+    event.preventDefault(); //without this code the function output wont show in console and stop auto page reload
 
     //formTarget grabs on to the event property target, to later on
     //access the value 
     let formTarget = event.target;
-
     let playerName = formTarget["player-name"].value; //we grab on the 'player-name' from our index.html 
 
     formTarget.reset();
 
-    //if the players[] is not empty
-    if (players.length > 0) {
 
-        //loop to check if the name already exists or not
-        //if it exists, dont do anything
-        for (let i = 0; i < players.length; i++) {
-            if (players[i].name != playerName) {
-                players.push({ name: playerName, topScore: 0 })
-                break;
-            }
+    //#region way to loop through and assign a object property to a form - name
+    // if the players[] is not empty
+    // let currentPlayer = playersArray[playerName];  //just to define current player
+    // if (playersArray.length > 0) {
 
-            //if the name doesnt exists insert the new name in the back
-            else {
+    //     //loop to check if the name already exists or not
+    //     //if it exists, dont do anything
+    //     for (let i = 0; i < playersArray.length; i++) {
+    //         if (playersArray[i].name == playerName) {
+    //             break;
+    //         }
+    //         else if (playersArray[i].name != playerName && i >= (playersArray.length - 1)) {
+    //             playersArray.push({ name: playerName, topScore: 0 })
+    //             currentPlayer = playerName; //changes to current player
+    //         }
+    //         //if the name doesnt exists insert the new name in the back
+    //         else {
+    //             continue;
+    //         }
+    //     }
+    // }
+    // //if players[] is empty
+    // else {
+    //     playersArray.push({ name: playerName, topScore: 0 });
+    //     currentPlayer = playerName;//changes to current player
 
-            }
-        }
+    // }
+    // console.log(playersArray);
+    // console.log(currentPlayer);
+
+    //#endregion
+
+    // another way to loop without using loop is find()
+    let currentPlayer = playersArray.find((parameterPlayer) => parameterPlayer.name == playerName);
+
+    if (!currentPlayer) {
+        currentPlayer = { name: playerName, topScore: 0 };
     }
-    //if players[] is empty
-    else {
-        players.push({ name: playerName, topScore: 0 });
 
-    }
-    console.log(players);
+    console.log(playersArray);
+}
+
+//saving the players into the local storage
+const savePlayersInLocalStorage = () => {
+    //we need a key and value for localStorage.setItem(key, value)
+    //the value --> has to be a string type, but 
+    //since the value of the playersArray is an object--> {name: "name", topScore: #}
+    //we need to convert the playersArray to string, so the way to do is, 
+    //using JSON.stringify(array) --> converts the object to be a string
+    //{name: "name", topScore: #} goes to --> "{name: "name", topScore: #}"
+    window.localStorage.setItem("players", JSON.stringify(playersArray));
+
+}
+
+//accessing the values from the local storage
+const loadPlayersFromLocalStorage = () => {
+    //now we need to go and take out the values from local storage
+    //we know that since the value stored is in string
+    //for my part, since, i'll be trying to access the 'object' which is stored as a string
+    //i will have to convert the string to object, 
+    //to do so, JSON.parse(...)
+
 }
