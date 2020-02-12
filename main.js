@@ -189,9 +189,16 @@ const setPlayer = event => {
     }
 
     formTarget.reset();
+    document.getElementById("game").removeAttribute("hidden"); //removes hidden attribute and brings back the game
+    formTarget.setAttribute("hidden", "true"); //formTarget = document.getElementById("player-form")
     draw();
 
     console.log(playersArray);
     console.log(currentPlayer);
 }
 
+//change player 
+const changePlayer = () => {
+    document.getElementById("player-form").removeAttribute("hidden"); //bringing up the hidden form back
+    document.getElementById("game").setAttribute("hidden", "true");
+}
