@@ -1,6 +1,3 @@
-//button
-let startButton = document.getElementById("start-game");
-let inflateButton = document.getElementById("inflate");
 
 //saving the players into the local storage
 const savePlayersInLocalStorage = () => {
@@ -49,16 +46,16 @@ let currentPlayer = {};
 //start game
 //also contains stop game function--> basically setTimeout(), 1st param
 const startgame = () => {
-    startButton.setAttribute("disabled", "true");
-    inflateButton.removeAttribute("disabled");
 
+    //'hidden-functionality' is a class in my index.html file
+    //that is set to display = none in my css file
+    document.getElementById("game-controls").classList.remove("hidden-functionality");
+    document.getElementById("main-game-controls").classList.add("hidden-functionality");
     startClock();
 
     //stop game if game length reached
     setTimeout(() => {
         console.log("TimeOut");
-        startButton.removeAttribute("disabled");
-        inflateButton.setAttribute("disabled", "true");
         balloonHeight = 120;
         balloonWidth = 100;
         inflateCount = 0;
@@ -126,7 +123,7 @@ const draw = () => {
 
     //high-pop-count update number
     let highPopCountElem = document.getElementById("high-pop-count");
-    highPopCountElem.innerText = currentPlayer.topScore.toString();
+    highPopCountElem.innerText = currentPlayer.topScore;
 
     //show current player in screen
     let playerNameElem = document.getElementById("player-name");

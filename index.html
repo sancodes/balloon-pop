@@ -4,52 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balloon Pop</title>
+    <link href="https://fonts.googleapis.com/css?family=Chewy|Gochi+Hand&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <form id="player-form" onsubmit="setPlayer(event)">
-        <label for="name"> Player Name </label>
-        <input type="text" name="player-name" required>
-        <button type="submit"> ok </button>
+    <header>
+        <div class="container shadow">
+            <img src="/balloon-pop-logo.png" alt="Game Logo">
         </div>
-    </form>
+    </header>
 
-    <section id="game" class="game" hidden>
-        <div>
-            <button onclick="changePlayer()">
-                Change Player
-            </button>
-        </div>
+    <main class="container card">
+        <form id="player-form" onsubmit="setPlayer(event)">
+            <div class="flex-elem space-evenly">
+                <div>
+                    <label for="name">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        <span> Name: </span>
+                    </label>
+                    <input type="text" name="player-name" required>
+                </div>
+                <div>
+                    <button type="submit"> ok </button>
+                </div>
+            </div>
+        </form>
 
-        <button onclick="startgame()" id="start-game">
-            Start Game
-        </button>
+        <section id="game" class="game" hidden>
+            <div class="card dark-background light-text">
+                <div class="flex-elem space-between">
+                    <div>
+                        <i class="fa fa-user-o" aria-hidden="true"></i>
+                        <span id="player-name">
+                        </span>
+                    </div>
+                    <div>
+                        Top Score:
+                        <span id="high-pop-count"> 0 </span>
+                    </div>
+                </div>
+            </div>
 
-        <button onclick="inflate()" id="inflate" disabled="true">
-            Inflate
-            <span id="click-count">0</span>
-        </button>
+            <div id="main-game-controls" class="flex-elem space-evenly mt-2">
+                <button onclick="changePlayer()" class="button-dark-color">
+                    Change Player
+                </button>
+                <button onclick="startgame()" id="start-game">
+                    Start Game
+                </button>
+            </div>
 
-        <div>
-            Ballons Popped
-            <span id="pop-count"> 0 </span>
-        </div>
+            <div id="game-controls" class="hidden-functionality">
+                <button onclick="inflate()" id="inflate">
+                    Inflate
+                    <span id="click-count">0</span>
+                </button>
 
-        <div>
-            Highest Ballons Popped
-            <span id="high-pop-count"> 0 </span>
-        </div>
-
-        <div>
-            Time Remaining
-            <span id="count-down"> 0 </span>
-        </div>
+                <div>
+                    Ballons Popped
+                    <span id="pop-count"> 0 </span>
+                </div>
 
 
-        <div id="balloon" class="balloon"> </div>
 
-    </section>
+                <div>
+                    Time Remaining
+                    <span id="count-down"> 0 </span>
+                </div>
+
+
+                <div id="balloon" class="balloon"> </div>
+            </div>
+        </section>
+    </main>
 
     <script src="main.js"> </script>
 </body>
