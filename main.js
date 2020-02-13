@@ -127,6 +127,10 @@ const draw = () => {
     //high-pop-count update number
     let highPopCountElem = document.getElementById("high-pop-count");
     highPopCountElem.innerText = currentPlayer.topScore.toString();
+
+    //show current player in screen
+    let playerNameElem = document.getElementById("player-name");
+    playerNameElem.innerText = currentPlayer.name;
 }
 //#endregion
 
