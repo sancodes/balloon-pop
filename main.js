@@ -24,6 +24,7 @@ const loadPlayersFromLocalStorage = () => {
     //after pulling the data the playersArray will be filled with playerDataFromStorage
     //code for when user initially tries to pull the data, when the local storage is empty
     //if there's a data then the array will just be the data that's there in local storage
+    //if the local storage is empty, the players array will still be empty.
     if (playerDataFromStorage) {
         playersArray = playerDataFromStorage;
     }
@@ -37,7 +38,7 @@ let eachIncrement = 40;
 let maxSizeToBurst = 250;
 let currentPopCount = 0;
 let clockId = 0;
-let gameLength = 5000; //milisecond 
+let gameLength = 10000; //milisecond 
 let timeRemaining = 0;
 let currentPlayer = {};
 let currentColor = "red";
@@ -51,6 +52,7 @@ const startgame = () => {
     //that is set to display = none in my css file
     document.getElementById("main-game-controls").classList.add("hidden-functionality");
     document.getElementById("game-controls").classList.remove("hidden-functionality");
+    document.getElementById("score-board").setAttribute("hidden", "true");
     startClock();
 
     //stop game if game length reached
@@ -69,6 +71,7 @@ const startgame = () => {
         draw();  //to update the original state of the balloon
         document.getElementById("game-controls").classList.add("hidden-functionality");
         document.getElementById("main-game-controls").classList.remove("hidden-functionality");
+        document.getElementById("score-board").removeAttribute("hidden");
     }, gameLength)
 }
 

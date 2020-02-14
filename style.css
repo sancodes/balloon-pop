@@ -184,6 +184,12 @@ button:hover {
     align-content: center;
 }
 
+
+
+.hidden-functionality{
+    display: none;
+}
+
  /* utility classes */
 /* margin top  */
 .mt-1 {
@@ -206,8 +212,10 @@ button:hover {
 .pad-3{
     padding-top: 1.5em;
 }
-.hidden-functionality{
-    display: none;
+
+/* text */
+.text-center{
+    text-align: center;
 }
 
 
