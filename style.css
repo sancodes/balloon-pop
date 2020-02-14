@@ -70,20 +70,99 @@ button:hover {
     justify-content: space-evenly;
 }
 
-
 .card.dark-background{
     background-color:var(--dark-bgcolor);
 }
 .card.light-text{
     color: var(--light);
 }
-.balloon {
 
+/* pumpbox style */
+.pump {
+    margin-top:70px;
+    width: 120px;
+    position: relative;
+    align-self: flex-end;
+
+}
+
+.pump-handle {
+    height: 10px;
+    width: 80px;
+    background-color:var(--dark-bgcolor);
+    position: absolute;
+    top: -50px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+
+}
+
+.pump-handle::before{
+    content: " ";
+    background-color: var(--dark-bgcolor);
+    height: 70px;
+    width: 10px;
+    display: block;
+    transition: all 1s linear;
+    
+}
+
+.pump:active .pump-handle {
+    top: -30px;
+
+}
+.pump-box{
+    background-color: var(--dark-button-bgcolor);
+    height: 100px;
+    width: 120px;
+    border-radius: 20px 20px 0px 0px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    user-select: none;
+}
+
+.pump-box span {
+    background-color: azure;
+    padding: 0.7em;
+
+}
+
+.balloon-container {
+    height: 250;
+}
+.balloon {
     height: 120px;
     width: 100px;
-    background-color: red;
+    background-color: rgb(223, 137, 204);
     border-radius: 50%;
     transition: var(--transition-effect);
+    animation: balloon-float-anime 5s ease-in-out 5s;
+    align-self: flex-end;
+    margin: 0 auto;
+    box-shadow: inset -10px -0.2px 4px rgba(46, 11, 11, 0.3);
+}
+
+.balloon-violet{
+    filter: hue-rotate(1045deg);
+}
+
+.balloon-green{
+    filter: hue-rotate(523deg);
+}
+
+@keyframes balloon-float-anime {
+    0%, 100% {
+        transform: translateY(-25px) rotate(19deg);
+    }
+    50% {
+        transform: translateY(0px) rotate(-19deg);
+    }
 }
 
 .container {

@@ -36,12 +36,12 @@ let balloonWidth = 100;
 let eachIncrement = 40;
 let maxSizeToBurst = 250;
 let currentPopCount = 0;
-let highestPopCount = 0;
 let clockId = 0;
 let gameLength = 5000; //milisecond 
 let timeRemaining = 0;
 let currentPlayer = {};
-
+let currentColor = "red";
+let possibleColors = ["yellow", "blue", "green"];
 
 //start game
 //also contains stop game function--> basically setTimeout(), 1st param
@@ -49,13 +49,12 @@ const startgame = () => {
 
     //'hidden-functionality' is a class in my index.html file
     //that is set to display = none in my css file
-    document.getElementById("game-controls").classList.remove("hidden-functionality");
     document.getElementById("main-game-controls").classList.add("hidden-functionality");
+    document.getElementById("game-controls").classList.remove("hidden-functionality");
     startClock();
 
     //stop game if game length reached
     setTimeout(() => {
-        console.log("TimeOut");
         balloonHeight = 120;
         balloonWidth = 100;
         inflateCount = 0;
@@ -68,6 +67,8 @@ const startgame = () => {
         currentPopCount = 0;
         stopClock();
         draw();  //to update the original state of the balloon
+        document.getElementById("game-controls").classList.add("hidden-functionality");
+        document.getElementById("main-game-controls").classList.remove("hidden-functionality");
     }, gameLength)
 }
 
@@ -87,22 +88,37 @@ const drawClock = () => {
     let countDownElem = document.getElementById("count-down");
     countDownElem.innerText = (timeRemaining / 1000).toString();
     timeRemaining -= 1000; //subtract by 1 sec, ,1000 means 1000 milisec
+
+    //maybe add a stop to make sure the clock doesnt go beyond the 0 or 
+    //it wouldnt stay at 1
 }
 //inflate function
 const inflate = () => {
-
-    //balloon burst -- if maxed reached
-    if (balloonHeight >= maxSizeToBurst) {
-        balloonHeight = 0;
-        balloonWidth = 0;
-        currentPopCount++;
-    }
-
+    checkBalloonPop();
     balloonHeight += eachIncrement; //height increment
     balloonWidth += eachIncrement; //width increment
     inflateCount++; //changing inflation count
 
     draw();
+}
+const checkBalloonPop = () => {
+    //balloon burst -- if maxed reached
+    if (balloonHeight >= maxSizeToBurst) {
+        // @ts-ignore
+        document.getElementById("pop-sound").play();
+        let ballonElement = document.getElementById("balloon");
+        getRandomColor();
+        ballonElement.style.backgroundColor = currentColor;
+        balloonHeight = 0;
+        balloonWidth = 0;
+        currentPopCount++;
+
+    }
+
+}
+const getRandomColor = () => {
+    let i = Math.floor(Math.random() * possibleColors.length);
+    currentColor = possibleColors[i];
 }
 
 //to show on the screen; resizing of the ballon
@@ -123,7 +139,7 @@ const draw = () => {
 
     //high-pop-count update number
     let highPopCountElem = document.getElementById("high-pop-count");
-    highPopCountElem.innerText = currentPlayer.topScore;
+    highPopCountElem.innerText = currentPlayer.topScore.toString();
 
     //show current player in screen
     let playerNameElem = document.getElementById("player-name");
@@ -178,7 +194,7 @@ const setPlayer = event => {
 
     // }
     // console.log(playersArray);
-    // console.log(`Current player ${currentPlayer}`);
+    // console.log(`Current player ${ currentPlayer } `);
     //#endregion
 
     // another way to loop without using loop is find()
@@ -192,10 +208,10 @@ const setPlayer = event => {
     formTarget.reset();
     document.getElementById("game").removeAttribute("hidden"); //removes hidden attribute and brings back the game
     formTarget.setAttribute("hidden", "true"); //formTarget = document.getElementById("player-form")
-    draw();
 
-    console.log(playersArray);
-    console.log(currentPlayer);
+    //hiding balloons and popcounts and time remaining
+    document.getElementById("game-controls").classList.add("hidden-functionality");
+    draw();
 }
 
 //change player 
