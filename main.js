@@ -43,7 +43,6 @@ let timeRemaining = 0;
 let currentPlayer = {};
 let currentColor = "red";
 let possibleColors = ["yellow", "blue", "green"];
-let template = " ";
 
 //start game
 //also contains stop game function--> basically setTimeout(), 1st param
@@ -58,6 +57,11 @@ const startgame = () => {
 
     //stop game if game length reached
     setTimeout(() => {
+
+        document.getElementById("game-controls").classList.add("hidden-functionality");
+        document.getElementById("main-game-controls").classList.remove("hidden-functionality");
+        document.getElementById("score-board").removeAttribute("hidden");
+
         balloonHeight = 120;
         balloonWidth = 100;
         inflateCount = 0;
@@ -69,11 +73,8 @@ const startgame = () => {
         }
         currentPopCount = 0;
         stopClock();
-        drawScoreboard();
         draw();  //to update the original state of the balloon
-        document.getElementById("game-controls").classList.add("hidden-functionality");
-        document.getElementById("main-game-controls").classList.remove("hidden-functionality");
-        document.getElementById("score-board").removeAttribute("hidden");
+        drawScoreboard();
     }, gameLength)
 }
 
@@ -99,21 +100,20 @@ const drawClock = () => {
 }
 //inflate function
 const inflate = () => {
-    checkBalloonPop();
     balloonHeight += eachIncrement; //height increment
     balloonWidth += eachIncrement; //width increment
     inflateCount++; //changing inflation count
-
+    checkBalloonPop();
     draw();
 }
 const checkBalloonPop = () => {
     //balloon burst -- if maxed reached
     if (balloonHeight >= maxSizeToBurst) {
-        // @ts-ignore
-        document.getElementById("pop-sound").play();
         let ballonElement = document.getElementById("balloon");
         getRandomColor();
         ballonElement.style.backgroundColor = currentColor;
+        // @ts-ignore
+        document.getElementById("pop-sound").play();
         balloonHeight = 0;
         balloonWidth = 0;
         currentPopCount++;
@@ -226,19 +226,25 @@ const changePlayer = () => {
     document.getElementById("game").setAttribute("hidden", "true");
 }
 
-playersArray.sort((player1, player2) => player2.topScore - player1.topScore)
+
+
 //scoreboard template
 const drawScoreboard = () => {
-    playersArray.forEach((playerElem) => {
+    let template = " "
+    playersArray.sort((player1, player2) => player2.topScore - player1.topScore)
+    playersArray.forEach((playerArrayElem) => {
         template += `
-        <div class="flex-elem space-between">
-            <span>
-                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-               ${playerElem.name}
-                </span>
-            <span> ${playerElem.topScore}</span>
-        </div>`
+                    <div class="flex-elem space-between">
+                        <span> 
+                            <i class="fa fa-user"></i>
+                            ${playerArrayElem.name}
+                        </span>
+                        <span> 
+                            Score: ${playerArrayElem.topScore}
+                        </span>
+                    </div>`
     })
+
     document.getElementById("score-data").innerHTML = template;
 }
 drawScoreboard();
