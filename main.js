@@ -43,6 +43,7 @@ let timeRemaining = 0;
 let currentPlayer = {};
 let currentColor = "red";
 let possibleColors = ["yellow", "blue", "green"];
+let template = " ";
 
 //start game
 //also contains stop game function--> basically setTimeout(), 1st param
@@ -68,6 +69,7 @@ const startgame = () => {
         }
         currentPopCount = 0;
         stopClock();
+        drawScoreboard();
         draw();  //to update the original state of the balloon
         document.getElementById("game-controls").classList.add("hidden-functionality");
         document.getElementById("main-game-controls").classList.remove("hidden-functionality");
@@ -75,7 +77,7 @@ const startgame = () => {
     }, gameLength)
 }
 
-//clock start functioin
+//clock start function
 const startClock = () => {
     timeRemaining = gameLength;
     drawClock();
@@ -215,6 +217,7 @@ const setPlayer = event => {
     //hiding balloons and popcounts and time remaining
     document.getElementById("game-controls").classList.add("hidden-functionality");
     draw();
+    drawScoreboard();
 }
 
 //change player 
@@ -222,3 +225,20 @@ const changePlayer = () => {
     document.getElementById("player-form").removeAttribute("hidden"); //bringing up the hidden form back
     document.getElementById("game").setAttribute("hidden", "true");
 }
+
+playersArray.sort((player1, player2) => player2.topScore - player1.topScore)
+//scoreboard template
+const drawScoreboard = () => {
+    playersArray.forEach((playerElem) => {
+        template += `
+        <div class="flex-elem space-between">
+            <span>
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+               ${playerElem.name}
+                </span>
+            <span> ${playerElem.topScore}</span>
+        </div>`
+    })
+    document.getElementById("score-data").innerHTML = template;
+}
+drawScoreboard();

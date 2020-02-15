@@ -169,7 +169,12 @@ button:hover {
     width: 50%;
     margin: auto;
 }
-
+/* for mobile devices */
+@media screen and (max-width: 700px) {
+    .container{
+        width: 80%;
+    }
+}
 
 .shadow{
     filter: drop-shadow(var(--shadow));
@@ -184,11 +189,10 @@ button:hover {
     align-content: center;
 }
 
-
-
 .hidden-functionality{
     display: none;
 }
+
 
  /* utility classes */
 /* margin top  */
