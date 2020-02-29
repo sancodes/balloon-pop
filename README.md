@@ -29,7 +29,7 @@ Basic game that can be played in the internet browser, which is also compatible 
 
 <li> Final Screen</li>
 <img src="/image/balloon-pop-screenshot-1.png" align="center"> 
-
+</ul>
 ## Written in: 
     HTML, CSS, JavaScript
 
