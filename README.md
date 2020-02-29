@@ -8,9 +8,11 @@ Basic game that can be played in the internet browser, which is also compatible 
     <summary> 
         Summary About The Game
     </summary>
-    The concept of the game is to pop as many balloons as possible, in the given timeframe. 
-    The time limit set for this game is 10 seconds. 
-    There is an option to enter your name, change player and lastly you can see the scores for the different players after the timer is up.
+    - Goal is to pop as many balloons as possible, before the time runs out.
+    - The time limit set for this game is 10 seconds. 
+    - To start popping balloons you click the pink pump.
+    - To start the game you must enter your name, and later can change players if you'd like.
+    - The top score is recorded and shown in the scoreboard.
 </details>
 
 <img src="/image/balloon-pop-screenshot-1.png" align="center"> 
