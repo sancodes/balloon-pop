@@ -33,6 +33,7 @@ Basic game that can be played in the internet browser, which is also compatible 
 </details>
  
 ## Written in : HTML, CSS, JavaScript
+<details>
 <summary> 
         Code Functionality 
 </summary>
@@ -49,7 +50,7 @@ Basic game that can be played in the internet browser, which is also compatible 
             </li>
             <li>This game works on mobile phone as well, as the screen width has been adjusted in CSS file</li>
         </ul>
-###### Give it a try and hope you enjoy it.
+</details>
 
 
 
