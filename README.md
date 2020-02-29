@@ -30,9 +30,9 @@ Basic game that can be played in the internet browser, which is also compatible 
 <li> Final Screen</li>
 <img src="/image/balloon-pop-screenshot-1.png" align="center"> 
 </ul>
-## Written in: 
-    HTML, CSS, JavaScript
-
+</details>
+ 
+## Written in : HTML, CSS, JavaScript
 <summary> 
         Code Functionality 
 </summary>
@@ -49,8 +49,6 @@ Basic game that can be played in the internet browser, which is also compatible 
             </li>
             <li>This game works on mobile phone as well, as the screen width has been adjusted in CSS file</li>
         </ul>
-</details>
-
 ###### Give it a try and hope you enjoy it.
 
 
