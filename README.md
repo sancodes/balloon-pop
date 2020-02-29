@@ -16,8 +16,8 @@ Basic game that can be played in the internet browser, which is also compatible 
     <li> The top score is recorded and shown in the scoreboard. </li>
     </ul>
 
-    <img src="/image/start-screen.png" align="center">
-    <img src="/image/balloon-pop-screenshot-1.png" align="center"> 
+<img src="/image/start-screen.png" align="center">
+<img src="/image/balloon-pop-screenshot-1.png" align="center"> 
 </details>
 
 
