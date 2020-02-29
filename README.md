@@ -40,8 +40,7 @@ Basic game that can be played in the internet browser, which is also compatible 
         <ul> 
             <li> The game connects HTML, CSS, JavaScript files togethor (DOM)</li>
             <li> Basic form input manipulation <li>
-            <li> 
-                The data given as input will be stored as an player object: 
+            <li> The data given as input will be stored as an player object: 
                 <ul>
                 <li> Which will be stored and loaded into and from browsers local storage </li>
                 <li> The data for the score will be updated everytime the new score is higher than the previous score</li>
