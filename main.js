@@ -1,30 +1,35 @@
 
 //saving the players into the local storage
 const savePlayersInLocalStorage = () => {
-    //we need a key and value for localStorage.setItem(key, value)
-    //the value --> has to be a string type, but 
-    //since the value of the playersArray is an object--> {name: "name", topScore: #}
-    //we need to convert the playersArray to string, so the way to do is, 
-    //using JSON.stringify(array) --> converts the object to be a string
-    //{name: "name", topScore: #} goes to --> "{name: "name", topScore: #}"
+    /**
+        we need a key and value for localStorage.setItem(key, value)
+        the value --> has to be a string type, but 
+        since the value of the playersArray is an object--> {name: "name", topScore: #}
+        we need to convert the playersArray to string, so the way to do is, 
+        using JSON.stringify(array) --> converts the object to be a string
+        {name: "name", topScore: #} goes to --> "{name: "name", topScore: #}"
+    **/
     window.localStorage.setItem("players", JSON.stringify(playersArray));
 
 }
 
 //accessing the values from the local storage
 const loadPlayersFromLocalStorage = () => {
-    //now we need to go and take out the values from local storage
-    //we know that since the value stored is in string
-    //for my part, since, i'll be trying to access the 'object' which is stored as a string
-    //i will have to convert the string to object, 
-    //to do so, JSON.parse(...)
-
+    /** 
+        now we need to go and take out the values from local storage
+        we know that since the value stored is in string
+        for my part, since, i'll be trying to access the 'object' which is stored as a string
+        i will have to convert the string to object, 
+        to do so, JSON.parse(...) 
+    **/
     let playerDataFromStorage = JSON.parse(window.localStorage.getItem("players"));
 
-    //after pulling the data the playersArray will be filled with playerDataFromStorage
-    //code for when user initially tries to pull the data, when the local storage is empty
-    //if there's a data then the array will just be the data that's there in local storage
-    //if the local storage is empty, the players array will still be empty.
+    /** 
+        after pulling the data the playersArray will be filled with playerDataFromStorage
+        code for when user initially tries to pull the data, when the local storage is empty
+        if there's a data then the array will just be the data that's there in local storage
+        if the local storage is empty, the players array will still be empty.
+    **/
     if (playerDataFromStorage) {
         playersArray = playerDataFromStorage;
     }
@@ -94,10 +99,8 @@ const drawClock = () => {
     let countDownElem = document.getElementById("count-down");
     countDownElem.innerText = (timeRemaining / 1000).toString();
     timeRemaining -= 1000; //subtract by 1 sec, ,1000 means 1000 milisec
-
-    //maybe add a stop to make sure the clock doesnt go beyond the 0 or 
-    //it wouldnt stay at 1
 }
+
 //inflate function
 const inflate = () => {
     balloonHeight += eachIncrement; //height increment
@@ -106,6 +109,7 @@ const inflate = () => {
     checkBalloonPop();
     draw();
 }
+
 const checkBalloonPop = () => {
     //balloon burst -- if maxed reached
     if (balloonHeight >= maxSizeToBurst) {
@@ -117,10 +121,9 @@ const checkBalloonPop = () => {
         balloonHeight = 0;
         balloonWidth = 0;
         currentPopCount++;
-
     }
-
 }
+
 const getRandomColor = () => {
     let i = Math.floor(Math.random() * possibleColors.length);
     currentColor = possibleColors[i];
@@ -165,11 +168,10 @@ const setPlayer = event => {
     let formTarget = event.target;
     let playerName = formTarget["player-name"].value; //we grab on the 'player-name' from our index.html 
 
-    // #region way to loop through and assign a object property to a form - name
+    // #region 
+    //way to loop through and assign a object property to a form - name
     // if the players[] is not empty
-
     // if (playersArray.length > 0) {
-
     //     //loop to check if the name already exists or not
     //     //if it exists, dont do anything
     //     for (let i = 0; i < playersArray.length; i++) {
@@ -196,7 +198,6 @@ const setPlayer = event => {
     //     currentPlayer = { name: playerName, topScore: 0 }; //changes to current player
     //     playersArray.push(currentPlayer);
     //     savePlayersInLocalStorage();
-
     // }
     // console.log(playersArray);
     // console.log(`Current player ${ currentPlayer } `);
@@ -209,7 +210,6 @@ const setPlayer = event => {
         playersArray.push(currentPlayer);
         savePlayersInLocalStorage();
     }
-
     formTarget.reset();
     document.getElementById("game").removeAttribute("hidden"); //removes hidden attribute and brings back the game
     formTarget.setAttribute("hidden", "true"); //formTarget = document.getElementById("player-form")
@@ -225,8 +225,6 @@ const changePlayer = () => {
     document.getElementById("player-form").removeAttribute("hidden"); //bringing up the hidden form back
     document.getElementById("game").setAttribute("hidden", "true");
 }
-
-
 
 //scoreboard template
 const drawScoreboard = () => {
@@ -244,7 +242,6 @@ const drawScoreboard = () => {
                         </span>
                     </div>`
     })
-
     document.getElementById("score-data").innerHTML = template;
 }
 drawScoreboard();
