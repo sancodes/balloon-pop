@@ -1,4 +1,13 @@
-# Balloon Pop
+<h1> Balloon Pop </h1>
+
+
+<h2> Table of Contents: </h2>
+<ul>
+<li> <a href=""> General Information </a> </li>
+<li> <a href=""> Technologies </a> </li>
+<li> <a href=""> Setup </a> </li>
+
+</ul>
 
 ## Overview
 Basic game that can be played in the internet browser, which is also compatible with mobile phones.
