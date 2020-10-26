@@ -43,10 +43,7 @@ Game that can be played in the internet browser, which is also compatible with m
 <img src="/image/balloon-pop-screenshot-1.png" align="center"> 
 <br>
 </ul>
-</details>
- 
-## Written in : HTML, CSS, JavaScript
-<details>
+
 <summary> 
         Code Functionality 
 </summary>
