@@ -54,9 +54,11 @@ Game that can be played in the internet browser, which is also compatible with m
 </ul>
 </div>
 <div id="tech">
+<h4> Technologies Used </h4>
 <p>HTML CSS JS </p>
 </div>
 <div id="setup">
+<h4> Setup </h4>
 <p>Since it is a browser based game no need for installation. 
 Just copy the link and paste it in your browser to get started.
 </p>
