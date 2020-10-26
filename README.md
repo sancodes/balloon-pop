@@ -53,12 +53,11 @@ Game that can be played in the internet browser, which is also compatible with m
     <li>This game works on mobile phone as well, as the screen width has been adjusted in CSS file</li>
 </ul>
 </div>
-
 <div id="tech">
-HTML CSS JS
+<p>HTML CSS JS </p>
 </div>
-
 <div id="setup">
-Since it is a browser based game no need for installation. 
+<p>Since it is a browser based game no need for installation. 
 Just copy the link and paste it in your browser to get started.
+</p>
 </div>
