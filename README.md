@@ -15,7 +15,7 @@
 Game that can be played in the internet browser, which is also compatible with mobile phones.
 </p>
 
-<h4> Goal </h4>
+<h4> Game Instructions </h4>
 <ul>
 <li> Goal is to pop as many balloons as possible, before the time runs out. </li>
 <li> The time limit set for this game is 10 seconds. </li> 
@@ -25,19 +25,23 @@ Game that can be played in the internet browser, which is also compatible with m
 </ul>
 </div>
 
-## Snapshots
+<h4> Snapshots </h4>
 <ul>
 <li> Start Screen </li>
 <img src="/image/start-screen.png" align="center">
+<br>
 
 <li> Change Player Screen </li>
 <img src="/image/Change-player.png" align="center">
+<br>
 
 <li> Game Screen </li>
 <img src="/image/Game.png" align="center">
+<br>
 
 <li> Final Screen</li>
 <img src="/image/balloon-pop-screenshot-1.png" align="center"> 
+<br>
 </ul>
 </details>
  
