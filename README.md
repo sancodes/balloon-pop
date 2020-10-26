@@ -3,9 +3,9 @@
 
 <h2> Table of Contents: </h2>
 <ul>
-<li> <a href="gm"> General Information </a> </li>
-<li> <a href="tech"> Technologies </a> </li>
-<li> <a href="setup"> Setup </a> </li>
+<li> <a href="#gm"> General Information </a> </li>
+<li> <a href="#tech"> Technologies </a> </li>
+<li> <a href="#setup"> Setup </a> </li>
 
 </ul>
 
@@ -54,11 +54,11 @@ Game that can be played in the internet browser, which is also compatible with m
 </ul>
 </div>
 <div id="tech">
-<h4> Technologies Used </h4>
+<h3> Technologies Used </h3>
 <p>HTML CSS JS </p>
 </div>
 <div id="setup">
-<h4> Setup </h4>
+<h3> Setup </h3>
 <p>Since it is a browser based game no need for installation. 
 Just copy the link and paste it in your browser to get started.
 </p>
